@@ -7,3 +7,12 @@
 
 ## Abstract
 to do
+
+## Hardware description of demo application
+to do
+
+## Software desc.
+to do
+
+## References
+- to do
