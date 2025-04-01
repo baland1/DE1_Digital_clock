@@ -1,4 +1,4 @@
-# DE1_Digital_clock
+# DE1 VHDL lab project
 ## Team members
 - Balajka Andrej
 - Mikeš Martin
