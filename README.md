@@ -1,9 +1,9 @@
 # DE1_Digital_clock
-##Team members##
+## Team members
 - Balajka Andrej
 - Mikeš Martin
 - Močary Filip
 - Mucha Štefan
 
-##Abstract##
+## Abstract
 to do
