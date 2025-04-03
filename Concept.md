@@ -1,7 +1,8 @@
 # Design
 ## possible additions
-switching +- on scoreboard
-pulldown - preventing multiple increments on one button press 
+- switching +- on scoreboard
+- pulldown - preventing multiple increments on one button press
+- Speaker sound (Start, Half-time, Stop, Goal) 
 ## components
 - 4x - counter (min, sec, score 1, score 2)
 - Clock enable
