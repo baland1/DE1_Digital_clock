@@ -38,7 +38,8 @@ entity counter_sec is
            count : out STD_LOGIC_VECTOR (3 downto 0);
            count_10: out STD_LOGIC_VECTOR (2 downto 0);
            min: out STD_LOGIC_VECTOR (3 downto 0);
-           min_10: out STD_LOGIC_VECTOR (3 downto 0)
+           min_10: out STD_LOGIC_VECTOR (3 downto 0);
+           ht : out STD_LOGIC_VECTOR (3 downto 0)
            );
 end counter_sec;
 
@@ -47,6 +48,7 @@ architecture Behavioral of counter_sec is
     signal sig_cnt_10: std_logic_vector (2 downto 0);
     signal sig_min: std_logic_vector (3 downto 0);
     signal sig_min_10: std_logic_vector (3 downto 0);
+    signal sig_ht: std_logic_vector (3 downto 0);
 begin
     process (clk)
 begin
@@ -56,8 +58,15 @@ begin
          sig_cnt_10 <= (others => '0');
          sig_min <= (others => '0');
          sig_min_10 <= (others => '0');
+         sig_ht <= (others => '0');
       elsif en ='1' then
-         sig_cnt <= sig_cnt + 1;
+         
+        if (sig_min_10 = 4 and sig_min = 5 and sig_cnt_10 = 0 and sig_cnt = 0 and sig_ht < x"5") then
+        
+        sig_ht <= sig_ht +1;
+        
+        else
+        sig_cnt <= sig_cnt + 1;
          if sig_cnt = x"9" then 
             sig_cnt <= (others => '0');
             sig_cnt_10 <= sig_cnt_10 + 1;
@@ -69,6 +78,7 @@ begin
                 sig_min_10 <= sig_min_10 +1;
                 end if;
             end if;
+        end if;
         end if; 
       end if;
    end if;
@@ -76,6 +86,7 @@ begin
 
 end process;
 
+ht <= sig_ht;
 count <= sig_cnt;
 count_10 <= sig_cnt_10;
 min <= sig_min;

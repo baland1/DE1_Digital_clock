@@ -1,6 +1,6 @@
 Vivado Simulator 2020.2
 Copyright 1986-1999, 2001-2020 Xilinx, Inc. All Rights Reserved.
-Running: C:/appz/Xilinx/Vivado/2020.2/bin/unwrapped/win64.o/xelab.exe -wto 9e8d03a631cc4ac1b77612f1191f3460 --incr --debug typical --relax --mt 2 -L xil_defaultlib -L secureip --snapshot cfg_tb_counter_sec_behav xil_defaultlib.cfg_tb_counter_sec -log elaborate.log 
+Running: C:/appz/Xilinx/Vivado/2020.2/bin/unwrapped/win64.o/xelab.exe -wto 9e8d03a631cc4ac1b77612f1191f3460 --incr --debug typical --relax --mt 2 -L xil_defaultlib -L secureip --snapshot cfg_tb_scoreboard_behav xil_defaultlib.cfg_tb_scoreboard -log elaborate.log 
 Using 2 slave threads.
 Starting static elaboration
 Completed static elaboration
@@ -12,6 +12,7 @@ Compiling package std.textio
 Compiling package ieee.std_logic_1164
 Compiling package ieee.std_logic_arith
 Compiling package ieee.std_logic_unsigned
-Compiling architecture behavioral of entity xil_defaultlib.counter_sec [counter_sec_default]
-Compiling architecture tb of entity xil_defaultlib.tb_counter_sec [tb_counter_sec]
-Built simulation snapshot cfg_tb_counter_sec_behav
+Compiling package ieee.numeric_std
+Compiling architecture behavioral of entity xil_defaultlib.scoreboard [scoreboard_default]
+Compiling architecture tb of entity xil_defaultlib.tb_scoreboard [tb_scoreboard]
+Built simulation snapshot cfg_tb_scoreboard_behav

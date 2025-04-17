@@ -1,7 +1,7 @@
 -- Testbench automatically generated online
 -- at https://vhdl.lapinoo.net
--- Generation date : Thu, 10 Apr 2025 12:21:37 GMT
--- Request id : cfwk-fed377c2-67f7b7d11ea43
+-- Generation date : Thu, 17 Apr 2025 11:34:19 GMT
+-- Request id : cfwk-fed377c2-6800e73be13e3
 
 library ieee;
 use ieee.std_logic_1164.all;
@@ -18,7 +18,8 @@ architecture tb of tb_counter_sec is
               count    : out std_logic_vector (3 downto 0);
               count_10 : out std_logic_vector (2 downto 0);
               min      : out std_logic_vector (3 downto 0);
-              min_10   : out std_logic_vector (3 downto 0));
+              min_10   : out std_logic_vector (3 downto 0);
+              ht       : out std_logic_vector (3 downto 0));
     end component;
 
     signal clk      : std_logic;
@@ -28,6 +29,7 @@ architecture tb of tb_counter_sec is
     signal count_10 : std_logic_vector (2 downto 0);
     signal min      : std_logic_vector (3 downto 0);
     signal min_10   : std_logic_vector (3 downto 0);
+    signal ht       : std_logic_vector (3 downto 0);
 
     constant TbPeriod : time := 1 ns; -- ***EDIT*** Put right period here
     signal TbClock : std_logic := '0';
@@ -42,7 +44,8 @@ begin
               count    => count,
               count_10 => count_10,
               min      => min,
-              min_10   => min_10);
+              min_10   => min_10,
+              ht       => ht);
 
     -- Clock generation
     TbClock <= not TbClock after TbPeriod/2 when TbSimEnded /= '1' else '0';
