@@ -32,7 +32,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 --use UNISIM.VComponents.all;
 
 entity anode_picker is
-    Port ( AN  :out STD_LOGIC_VECTOR (7 downto 0);
+    Port ( Anodes  :out STD_LOGIC_VECTOR (7 downto 0);
           outp :out STD_LOGIC_VECTOR (3 downto 0);
     
           dig0 : in std_logic_vector (3 downto 0);
@@ -101,6 +101,6 @@ begin
     
     end process;
 
-AN <= not sig_AN;
+Anodes <= not sig_AN;
 outp <= sig_outp;
 end Behavioral;

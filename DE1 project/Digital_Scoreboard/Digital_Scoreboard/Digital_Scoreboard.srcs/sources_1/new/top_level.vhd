@@ -91,7 +91,7 @@ end component;
 -- anode "picker"
 
 component anode_picker is
-    Port ( AN  :out STD_LOGIC_VECTOR (7 downto 0);
+    Port ( Anodes  :out STD_LOGIC_VECTOR (7 downto 0);
           outp :out STD_LOGIC_VECTOR (3 downto 0);
     
           dig0 : in std_logic_vector (3 downto 0);
@@ -202,6 +202,8 @@ begin
         dig5 => lscr1todig5,
         dig6 => rscr10todig6,
         dig7 => rscr1todig7,
+        
+        Anodes => AN,
         
         outp => sig_bin
     );

@@ -12,7 +12,7 @@ end tb_anode_picker;
 architecture tb of tb_anode_picker is
 
     component anode_picker
-        port (AN   : out std_logic_vector (7 downto 0);
+        port (Anodes   : out std_logic_vector (7 downto 0);
               outp : out std_logic_vector (3 downto 0);
               dig0 : in std_logic_vector (3 downto 0);
               dig1 : in std_logic_vector (3 downto 0);
@@ -27,7 +27,7 @@ architecture tb of tb_anode_picker is
               en   : in std_logic);
     end component;
 
-    signal AN   : std_logic_vector (7 downto 0);
+    signal Anodes   : std_logic_vector (7 downto 0);
     signal outp : std_logic_vector (3 downto 0);
     signal dig0 : std_logic_vector (3 downto 0);
     signal dig1 : std_logic_vector (3 downto 0);
@@ -48,7 +48,7 @@ architecture tb of tb_anode_picker is
 begin
 
     dut : anode_picker
-    port map (AN   => AN,
+    port map (Anodes   => Anodes,
               outp => outp,
               dig0 => dig0,
               dig1 => dig1,
