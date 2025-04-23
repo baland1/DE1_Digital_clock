@@ -18,8 +18,7 @@ architecture tb of tb_counter_sec is
               count    : out std_logic_vector (3 downto 0);
               count_10 : out std_logic_vector (3 downto 0);
               min      : out std_logic_vector (3 downto 0);
-              min_10   : out std_logic_vector (3 downto 0);
-              ht       : out std_logic_vector (9 downto 0));
+              min_10   : out std_logic_vector (3 downto 0));
     end component;
 
     signal clk      : std_logic;
@@ -29,7 +28,7 @@ architecture tb of tb_counter_sec is
     signal count_10 : std_logic_vector (3 downto 0);
     signal min      : std_logic_vector (3 downto 0);
     signal min_10   : std_logic_vector (3 downto 0);
-    signal ht       : std_logic_vector (9 downto 0);
+
 
     constant TbPeriod : time := 1 ns; -- ***EDIT*** Put right period here
     signal TbClock : std_logic := '0';
@@ -44,8 +43,7 @@ begin
               count    => count,
               count_10 => count_10,
               min      => min,
-              min_10   => min_10,
-              ht       => ht);
+              min_10   => min_10);
 
     -- Clock generation
     TbClock <= not TbClock after TbPeriod/2 when TbSimEnded /= '1' else '0';

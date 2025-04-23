@@ -37,8 +37,7 @@ entity counter_sec is
            count : out STD_LOGIC_VECTOR (3 downto 0);
            count_10: out STD_LOGIC_VECTOR (3 downto 0);
            min: out STD_LOGIC_VECTOR (3 downto 0);
-           min_10: out STD_LOGIC_VECTOR (3 downto 0);
-           ht : out STD_LOGIC_VECTOR (9 downto 0)
+           min_10: out STD_LOGIC_VECTOR (3 downto 0)
            );
 end counter_sec;
 
@@ -86,7 +85,6 @@ begin
 
 end process;
 
-ht <= sig_ht;
 count <= sig_cnt;
 count_10 <= sig_cnt_10;
 min <= sig_min;

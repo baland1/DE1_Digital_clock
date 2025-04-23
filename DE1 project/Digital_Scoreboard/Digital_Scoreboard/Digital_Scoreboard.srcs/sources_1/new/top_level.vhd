@@ -34,6 +34,8 @@ use IEEE.STD_LOGIC_1164.ALL;
 entity top_level is
     Port ( CLK100MHZ : in STD_LOGIC;
            BTNC : in STD_LOGIC;
+           BTNL : in std_logic;
+           BTNR : in std_logic;
            CA : out STD_LOGIC;
            CB : out STD_LOGIC;
            CC : out STD_LOGIC;
@@ -47,7 +49,177 @@ end top_level;
 
 architecture Behavioral of top_level is
 
+-- clock component
+
+component clock_enable is
+    Generic (
+        periods : integer
+    );
+
+    Port ( clk : in STD_LOGIC;
+           rst : in STD_LOGIC;
+           pulse : out STD_LOGIC);
+end component;
+
+-- counter_sec component
+
+component counter_sec is
+    Port ( clk : in STD_LOGIC;
+           rst : in STD_LOGIC;
+           en : in STD_LOGIC;
+           count : out STD_LOGIC_VECTOR (3 downto 0);
+           count_10: out STD_LOGIC_VECTOR (3 downto 0);
+           min: out STD_LOGIC_VECTOR (3 downto 0);
+           min_10: out STD_LOGIC_VECTOR (3 downto 0)
+           );
+end component;
+
+-- scoreboard component
+
+component scoreboard is
+    Port ( clk : in STD_LOGIC;
+           rst : in STD_LOGIC;
+           en : in STD_LOGIC;
+           incr_L : in STD_LOGIC;
+           incr_R : in STD_LOGIC;
+           L_scr_1 : out STD_LOGIC_VECTOR (3 downto 0);
+           L_scr_10 : out STD_LOGIC_VECTOR (3 downto 0);
+           R_scr_1 : out STD_LOGIC_VECTOR (3 downto 0);
+           R_scr_10 : out STD_LOGIC_VECTOR (3 downto 0));
+end component;
+
+-- anode "picker"
+
+component anode_picker is
+    Port ( AN  :out STD_LOGIC_VECTOR (7 downto 0);
+          outp :out STD_LOGIC_VECTOR (3 downto 0);
+    
+          dig0 : in std_logic_vector (3 downto 0);
+          dig1 : in std_logic_vector (3 downto 0);
+          dig2 : in std_logic_vector (3 downto 0);
+          dig3 : in std_logic_vector (3 downto 0);
+          
+          dig4 : in std_logic_vector (3 downto 0);
+          dig5 : in std_logic_vector (3 downto 0);
+          dig6 : in std_logic_vector (3 downto 0);
+          dig7 : in std_logic_vector (3 downto 0);
+          
+          clk : in STD_LOGIC;
+          rst : in STD_LOGIC;
+          en  : in STD_LOGIC
+    );
+end component;
+
+-- bin2seg
+
+component bin2seg is
+    Port ( clear : in STD_LOGIC;
+           bin : in STD_LOGIC_VECTOR (3 downto 0);
+           seg : out STD_LOGIC_VECTOR (6 downto 0));
+end component;
+
+    signal sig_en_1khz1 : std_logic;
+    signal sig_en_1khz2 : std_logic;
+    signal sig_en_1hz   : std_logic;
+    
+    signal min10todig0 : std_logic_vector(3 downto 0);
+    signal   mintodig1 : std_logic_vector(3 downto 0);
+    signal sec10todig2 : std_logic_vector(3 downto 0);
+    signal   sectodig3 : std_logic_vector(3 downto 0);
+    
+    signal lscr10todig4 : std_logic_vector(3 downto 0);
+    signal  lscr1todig5 : std_logic_vector(3 downto 0);
+    signal rscr10todig6 : std_logic_vector(3 downto 0);
+    signal  rscr1todig7 : std_logic_vector(3 downto 0);
+    
+    signal sig_bin : std_logic_vector(3 downto 0);
+
 begin
+
+    CLOCK_1KHZ1 : component clock_enable
+    generic map (periods=>100_000)
+    port map(
+        clk => CLK100MHZ,
+        rst => BTNC,
+        pulse => sig_en_1khz1
+    );
+    
+    CLOCK_1KHZ2 : component clock_enable
+    generic map (periods=>100_000)
+    port map(
+        clk => CLK100MHZ,
+        rst => BTNC,
+        pulse => sig_en_1khz2
+    );
+    
+    CLOCK_1HZ : component clock_enable
+    generic map (periods=>100_000_000)
+    port map(
+        clk => CLK100MHZ,
+        rst => BTNC,
+        pulse => sig_en_1hz
+    );
+    
+    SEC_COUNTER : component counter_sec
+    port map(
+        clk => CLK100MHZ,  -- redundant? likely - might remove them from both counter_sec.vhd and scoreboard.vhd
+        rst => BTNC,
+        en => sig_en_1hz,
+        
+        min_10=> min10todig0,
+        min => mintodig1,
+        count_10 => sec10todig2, 
+        count => sectodig3
+    );
+    
+    SCORE_BOARD : component scoreboard
+    port map(
+        clk => CLK100MHZ,
+        rst => BTNC,
+        incr_L => BTNL,
+        incr_R => BTNR,
+        en => sig_en_1khz1,
+        
+        L_scr_10 => lscr10todig4,
+        L_scr_1 => lscr1todig5,
+        R_scr_10 => rscr10todig6,
+        R_scr_1 => rscr1todig7
+        
+    );
+    
+    DISPLAY : component anode_picker
+    port map(
+        clk => CLK100MHZ,
+        rst => BTNC,
+        en => sig_en_1khz2,
+        
+        dig0 => min10todig0,
+        dig1 => mintodig1,
+        dig2 => sec10todig2, 
+        dig3 => sectodig3,
+        
+        dig4 => lscr10todig4,
+        dig5 => lscr1todig5,
+        dig6 => rscr10todig6,
+        dig7 => rscr1todig7,
+        
+        outp => sig_bin
+    );
+    
+    BINSEG : component bin2seg
+    port map(
+        clear => BTNC,
+        bin => sig_bin,
+        seg(6) => CA,
+        seg(5) => CB,
+        seg(4) => CC,
+        seg(3) => CD,
+        seg(2) => CE,
+        seg(1) => CF,
+        seg(0) => CG
+    );
+    
+    DP <= '1';
 
 
 end Behavioral;
