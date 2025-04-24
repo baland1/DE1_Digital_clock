@@ -64,7 +64,8 @@ begin
 
  p_debounce : process (clk) is
         variable edge_internal : std_logic;
-        variable rise_internal : std_logic;
+        variable rise_internal_r : std_logic;
+        variable rise_internal_l : std_logic;
         variable fall_internal : std_logic;
 
     begin
@@ -76,7 +77,7 @@ begin
             
             if (sig_count_r = MAX_COUNT - 1) then
                 sig_btn_r   <= sync_input_r;
-                rise      <= rise_internal;
+                rise      <= rise_internal_r;
                 sig_count_r <= 0;  
                 
                 elsif (sync_input_r) /= sig_btn_r then
@@ -86,7 +87,7 @@ begin
                
                if (sig_count_l = MAX_COUNT - 1) then
                 sig_btn_l   <= sync_input_l;
-                rise      <= rise_internal;
+                rise      <= rise_internal_l;
                 sig_count_l <= 0;  
                 
                 elsif (sync_input_l) /= sig_btn_l then
@@ -96,17 +97,12 @@ begin
         end if;
         
        
-        rise_internal := sync_input_r and not sig_btn_r;
-        rise_internal := sync_input_l and not sig_btn_l;
+        rise_internal_r := sync_input_r and not sig_btn_r;
+        rise_internal_l := sync_input_l and not sig_btn_l;
         btn_out_r <= sig_btn_r;
         btn_out_l <= sig_btn_l;
 
     end process p_debounce;
-
-
-
-end Behavioral;
-
 
 
 
