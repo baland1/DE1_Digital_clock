@@ -1,7 +1,0 @@
-# compile vhdl design source files
-vhdl xil_defaultlib  \
-"../../../../Digital_Scoreboard.srcs/sources_1/new/anode_picker.vhd" \
-"../../../../Digital_Scoreboard.srcs/sim_1/new/anode_picker_tb.vhd" \
-
-# Do not sort compile order
-nosort
