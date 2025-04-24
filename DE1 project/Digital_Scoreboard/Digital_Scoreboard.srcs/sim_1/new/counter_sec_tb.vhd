@@ -1,7 +1,7 @@
 -- Testbench automatically generated online
 -- at https://vhdl.lapinoo.net
--- Generation date : Thu, 17 Apr 2025 11:34:19 GMT
--- Request id : cfwk-fed377c2-6800e73be13e3
+-- Generation date : Tue, 22 Apr 2025 13:51:40 GMT
+-- Request id : cfwk-fed377c2-68079eecf2bfb
 
 library ieee;
 use ieee.std_logic_1164.all;
@@ -16,20 +16,19 @@ architecture tb of tb_counter_sec is
               rst      : in std_logic;
               en       : in std_logic;
               count    : out std_logic_vector (3 downto 0);
-              count_10 : out std_logic_vector (2 downto 0);
+              count_10 : out std_logic_vector (3 downto 0);
               min      : out std_logic_vector (3 downto 0);
-              min_10   : out std_logic_vector (3 downto 0);
-              ht       : out std_logic_vector (3 downto 0));
+              min_10   : out std_logic_vector (3 downto 0));
     end component;
 
     signal clk      : std_logic;
     signal rst      : std_logic;
     signal en       : std_logic;
     signal count    : std_logic_vector (3 downto 0);
-    signal count_10 : std_logic_vector (2 downto 0);
+    signal count_10 : std_logic_vector (3 downto 0);
     signal min      : std_logic_vector (3 downto 0);
     signal min_10   : std_logic_vector (3 downto 0);
-    signal ht       : std_logic_vector (3 downto 0);
+
 
     constant TbPeriod : time := 1 ns; -- ***EDIT*** Put right period here
     signal TbClock : std_logic := '0';
@@ -44,8 +43,7 @@ begin
               count    => count,
               count_10 => count_10,
               min      => min,
-              min_10   => min_10,
-              ht       => ht);
+              min_10   => min_10);
 
     -- Clock generation
     TbClock <= not TbClock after TbPeriod/2 when TbSimEnded /= '1' else '0';
@@ -55,21 +53,18 @@ begin
 
     stimuli : process
     begin
-        -- EDIT Adapt initialization as needed
+        -- ***EDIT*** Adapt initialization as needed
         en <= '1';
 
         -- Reset generation
-        -- EDIT: Check that rst is really your reset signal
+        -- ***EDIT*** Check that rst is really your reset signal
         rst <= '1';
-        wait for 10 ns;
+        wait for 100 ns;
         rst <= '0';
-        wait for 10 ns;
+        wait for 100 ns;
 
-        -- EDIT Add stimuli here
-        wait for 1000 * TbPeriod;
-        
-        en <= '0';
-        wait for 21 * TbPeriod;
+        -- ***EDIT*** Add stimuli here
+        wait for 10000 * TbPeriod;
 
         -- Stop the clock and hence terminate the simulation
         TbSimEnded <= '1';
