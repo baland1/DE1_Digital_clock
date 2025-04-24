@@ -53,7 +53,7 @@ constant CLK_PERIOD : time     := 10 ns;
     signal sync_buffer_l : std_logic_vector(SYNC_BITS - 1 downto 0);
     alias  sync_input_l:   std_logic is sync_buffer_l(SYNC_BITS - 1);
     signal sync_buffer_r : std_logic_vector(SYNC_BITS - 1 downto 0);
-    alias  sync_input_r:   std_logic is sync_buffer_l(SYNC_BITS - 1);  
+    alias  sync_input_r:   std_logic is sync_buffer_r(SYNC_BITS - 1);  
     signal sig_count_r   : natural range 0 to MAX_COUNT - 1;
     signal sig_count_l   : natural range 0 to MAX_COUNT - 1;
     signal sig_btn_r     : std_logic;
@@ -102,6 +102,11 @@ begin
         btn_out_l <= sig_btn_l;
 
     end process p_debounce;
+
+
+
+end Behavioral;
+
 
 
 
