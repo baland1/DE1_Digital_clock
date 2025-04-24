@@ -1,0 +1,108 @@
+----------------------------------------------------------------------------------
+-- Company: 
+-- Engineer: 
+-- 
+-- Create Date: 04/24/2025 01:23:21 PM
+-- Design Name: 
+-- Module Name: debounce - Behavioral
+-- Project Name: 
+-- Target Devices: 
+-- Tool Versions: 
+-- Description: 
+-- 
+-- Dependencies: 
+-- 
+-- Revision:
+-- Revision 0.01 - File Created
+-- Additional Comments:
+-- 
+----------------------------------------------------------------------------------
+
+
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
+-- Uncomment the following library declaration if using
+-- arithmetic functions with Signed or Unsigned values
+--use IEEE.NUMERIC_STD.ALL;
+
+-- Uncomment the following library declaration if instantiating
+-- any Xilinx leaf cells in this code.
+--library UNISIM;
+--use UNISIM.VComponents.all;
+
+entity debounce is
+    generic(
+        DB_TIME: time:= 25ns
+    );
+    Port ( btn_l : in STD_LOGIC;
+           btn_r : in STD_LOGIC;
+           clk : in STD_LOGIC;
+           rise    : out   std_logic;
+           btn_out_r: out STD_LOGIC;
+           btn_out_l: out STD_LOGIC
+           );
+end debounce;
+
+architecture Behavioral of debounce is
+
+constant CLK_PERIOD : time     := 10 ns;
+    constant MAX_COUNT  : natural  := DB_TIME / CLK_PERIOD;
+    constant SYNC_BITS  : positive := 2;  -- Number of bits in the synchronisation buffer (2 minimum)
+
+    signal sync_buffer_l : std_logic_vector(SYNC_BITS - 1 downto 0);
+    alias  sync_input_l:   std_logic is sync_buffer_l(SYNC_BITS - 1);
+    signal sync_buffer_r : std_logic_vector(SYNC_BITS - 1 downto 0);
+    alias  sync_input_r:   std_logic is sync_buffer_l(SYNC_BITS - 1);  
+    signal sig_count_r   : natural range 0 to MAX_COUNT - 1;
+    signal sig_count_l   : natural range 0 to MAX_COUNT - 1;
+    signal sig_btn_r     : std_logic;
+    signal sig_btn_l     : std_logic;
+
+
+begin
+
+ p_debounce : process (clk) is
+        variable edge_internal : std_logic;
+        variable rise_internal : std_logic;
+        variable fall_internal : std_logic;
+
+    begin
+     
+        if rising_edge(clk) then
+         sync_buffer_l <= sync_buffer_l(SYNC_BITS - 2 downto 0) & (btn_l);
+         sync_buffer_r <= sync_buffer_r(SYNC_BITS - 2 downto 0) & (btn_r);
+            rise <= '0';
+            
+            if (sig_count_r = MAX_COUNT - 1) then
+                sig_btn_r   <= sync_input_r;
+                rise      <= rise_internal;
+                sig_count_r <= 0;  
+                
+                elsif (sync_input_r) /= sig_btn_r then
+                sig_count_r <= sig_count_r + 1;
+              else sig_count_r <= 0;
+                end if;
+               
+               if (sig_count_l = MAX_COUNT - 1) then
+                sig_btn_l   <= sync_input_l;
+                rise      <= rise_internal;
+                sig_count_l <= 0;  
+                
+                elsif (sync_input_l) /= sig_btn_l then
+                sig_count_l <= sig_count_l + 1;
+              else sig_count_l <= 0;
+                end if;
+        end if;
+        
+       
+        rise_internal := sync_input_r and not sig_btn_r;
+        rise_internal := sync_input_l and not sig_btn_l;
+        btn_out_r <= sig_btn_r;
+        btn_out_l <= sig_btn_l;
+
+    end process p_debounce;
+
+
+
+end Behavioral;
