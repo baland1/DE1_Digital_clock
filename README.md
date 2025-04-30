@@ -37,7 +37,7 @@ CLK100MHZ        - in
 - bin2seg
 # Hardware description of demo application
 to do
-![top level image test](images/top_level.svg)
+![test](images/top_level.svg)
 # Software desc.
 to do
 
