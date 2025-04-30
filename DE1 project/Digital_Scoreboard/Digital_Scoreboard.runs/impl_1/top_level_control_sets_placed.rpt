@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2024.2 (win64) Build 5239630 Fri Nov 08 22:35:27 MST 2024
-| Date         : Thu Apr 24 17:04:13 2025
+| Date         : Wed Apr 30 21:59:19 2025
 | Host         : DESKTOP-NA8KE1C running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file top_level_control_sets_placed.rpt
 | Design       : top_level
@@ -60,10 +60,10 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | No           | No                    | No                     |              13 |            8 |
 | No           | No                    | Yes                    |               0 |            0 |
-| No           | Yes                   | No                     |              82 |           23 |
+| No           | Yes                   | No                     |              82 |           20 |
 | Yes          | No                    | No                     |               1 |            1 |
 | Yes          | No                    | Yes                    |               0 |            0 |
-| Yes          | Yes                   | No                     |              48 |           18 |
+| Yes          | Yes                   | No                     |              48 |           20 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
 
@@ -74,19 +74,19 @@ Table of Contents
 |     Clock Signal     |           Enable Signal           |          Set/Reset Signal         | Slice Load Count | Bel Load Count | Bels / Slice |
 +----------------------+-----------------------------------+-----------------------------------+------------------+----------------+--------------+
 |  CLK100MHZ_IBUF_BUFG | CLOCK_1HZ/sig_ht_reg[6]           |                                   |                1 |              1 |         1.00 |
-|  CLK100MHZ_IBUF_BUFG | SEC_COUNTER/sig_min_10            | SEC_COUNTER/sig_cnt1              |                2 |              4 |         2.00 |
+|  CLK100MHZ_IBUF_BUFG | SEC_COUNTER/sig_min               | SEC_COUNTER/sig_min[3]_i_1_n_0    |                2 |              4 |         2.00 |
 |  CLK100MHZ_IBUF_BUFG | SEC_COUNTER/sig_cnt               | SEC_COUNTER/sig_cnt[3]_i_1_n_0    |                1 |              4 |         4.00 |
 |  CLK100MHZ_IBUF_BUFG | SEC_COUNTER/sig_cnt_10[3]_i_2_n_0 | SEC_COUNTER/sig_cnt_10[3]_i_1_n_0 |                1 |              4 |         4.00 |
-|  CLK100MHZ_IBUF_BUFG | SEC_COUNTER/sig_min               | SEC_COUNTER/sig_min[3]_i_1_n_0    |                1 |              4 |         4.00 |
-|  CLK100MHZ_IBUF_BUFG | SCORE_BOARD/r_scr                 | BTNC_IBUF                         |                3 |              7 |         2.33 |
-|  CLK100MHZ_IBUF_BUFG | SCORE_BOARD/l_scr0                | BTNC_IBUF                         |                4 |              7 |         1.75 |
-|  CLK100MHZ_IBUF_BUFG | CLOCK_1KHZ2/E[0]                  | DISPLAY/sig_AN[7]_i_1_n_0         |                2 |              8 |         4.00 |
-|  CLK100MHZ_IBUF_BUFG | SEC_COUNTER/sig_ht                | SEC_COUNTER/sig_cnt1              |                4 |             10 |         2.50 |
+|  CLK100MHZ_IBUF_BUFG | SEC_COUNTER/sig_min_10            | SEC_COUNTER/sig_cnt1              |                2 |              4 |         2.00 |
+|  CLK100MHZ_IBUF_BUFG | SCOREBOARD_L/scr[6]_i_1_n_0       | BTNC_IBUF                         |                4 |              7 |         1.75 |
+|  CLK100MHZ_IBUF_BUFG | SCOREBOARD_R/scr[6]_i_1__0_n_0    | BTNC_IBUF                         |                4 |              7 |         1.75 |
+|  CLK100MHZ_IBUF_BUFG | CLOCK_1KHZ2/E[0]                  | DISPLAY/sig_AN[7]_i_1_n_0         |                3 |              8 |         2.67 |
+|  CLK100MHZ_IBUF_BUFG | SEC_COUNTER/sig_ht                | SEC_COUNTER/sig_cnt1              |                3 |             10 |         3.33 |
 |  CLK100MHZ_IBUF_BUFG |                                   |                                   |                8 |             13 |         1.62 |
 |  CLK100MHZ_IBUF_BUFG |                                   | CLOCK_1KHZ2/clear                 |                5 |             17 |         3.40 |
 |  CLK100MHZ_IBUF_BUFG |                                   | CLOCK_1HZ/sig_count[0]_i_1_n_0    |                6 |             21 |         3.50 |
-|  CLK100MHZ_IBUF_BUFG |                                   | DEBOUNCER_R/sig_btn               |                7 |             22 |         3.14 |
-|  CLK100MHZ_IBUF_BUFG |                                   | DEBOUNCER_L/sig_btn               |                5 |             22 |         4.40 |
+|  CLK100MHZ_IBUF_BUFG |                                   | DEBOUNCER_L/sig_btn               |                4 |             22 |         5.50 |
+|  CLK100MHZ_IBUF_BUFG |                                   | DEBOUNCER_R/sig_btn               |                5 |             22 |         4.40 |
 +----------------------+-----------------------------------+-----------------------------------+------------------+----------------+--------------+
 
 

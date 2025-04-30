@@ -83,17 +83,13 @@ end component;
 component scoreboard is
     Port ( clk : in STD_LOGIC;
            rst : in STD_LOGIC;
-           en_l : in STD_LOGIC;
-           en_r : in STD_LOGIC;
-           incr_L : in STD_LOGIC;
-           incr_R : in STD_LOGIC;
-           L_scr_1 : out STD_LOGIC_VECTOR (3 downto 0);
-           L_scr_10 : out STD_LOGIC_VECTOR (3 downto 0);
-           R_scr_1 : out STD_LOGIC_VECTOR (3 downto 0);
-           R_scr_10 : out STD_LOGIC_VECTOR (3 downto 0));
+           en : in STD_LOGIC;
+           incr : in STD_LOGIC;
+           scr_1 : out STD_LOGIC_VECTOR (3 downto 0);
+           scr_10 : out STD_LOGIC_VECTOR (3 downto 0));
 end component;
 
--- anode "picker"
+-- anode picker
 
 component anode_picker is
     Port ( Anodes  :out STD_LOGIC_VECTOR (7 downto 0);
@@ -209,21 +205,34 @@ begin
         count => sectodig3
     );
     
-    SCORE_BOARD : component scoreboard
+    SCOREBOARD_L : component scoreboard
     port map(
         clk => CLK100MHZ,
         rst => BTNC,
-        incr_L => toleft,
-        incr_R => toright,
-        en_l => scren_l,
-        en_r => scren_r,
+        incr => toleft,
+        en => scren_l,
         
-        L_scr_10 => lscr10todig4,
-        L_scr_1 => lscr1todig5,
-        R_scr_10 => rscr10todig6,
-        R_scr_1 => rscr1todig7
+        scr_10 => lscr10todig4,
+        scr_1 => lscr1todig5
         
     );
+    
+    SCOREBOARD_R : component scoreboard
+    port map(
+        clk => CLK100MHZ,
+        rst => BTNC,
+        incr => toright,
+        en => scren_r,
+        
+        scr_10 => rscr10todig6,
+        scr_1 => rscr1todig7
+        
+    );
+    
+    
+    
+    
+            
     
     DISPLAY : component anode_picker
     port map(

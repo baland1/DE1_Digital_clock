@@ -7,43 +7,33 @@ use ieee.numeric_std.all;
 entity scoreboard is
     Port ( clk : in STD_LOGIC;
            rst : in STD_LOGIC;
-           en_l : in STD_LOGIC;
-           en_r : in STD_LOGIC;
-           incr_L : in STD_LOGIC;
-           incr_R : in STD_LOGIC;
-           L_scr_1 : out STD_LOGIC_VECTOR (3 downto 0);
-           L_scr_10 : out STD_LOGIC_VECTOR (3 downto 0);
-           R_scr_1 : out STD_LOGIC_VECTOR (3 downto 0);
-           R_scr_10 : out STD_LOGIC_VECTOR (3 downto 0));
+           en : in STD_LOGIC;
+           incr : in STD_LOGIC;
+           scr_1 : out STD_LOGIC_VECTOR (3 downto 0);
+           scr_10 : out STD_LOGIC_VECTOR (3 downto 0));
 end scoreboard;
 
 architecture Behavioral of scoreboard is
 
-    signal l_scr : std_logic_vector (6 downto 0); 
-    signal r_scr : std_logic_vector (6 downto 0); 
+    signal scr : std_logic_vector (6 downto 0); 
 
 begin
     process (clk) is 
     begin
     if rising_edge(clk) then
         if rst = '1' then
-        l_scr <=(others => '0');
-        r_scr <=(others => '0');
-        elsif (incr_L = '1' and en_l ='1') and l_scr < x"63" then
-        l_scr <= l_scr+1;
-        elsif (incr_R = '1' and en_r ='1') and r_scr < x"63" then
-        r_scr <= r_scr+1;
+        scr <=(others => '0');
+        elsif (incr = '1' and en ='1') and scr < x"63" then
+        scr <= scr+1;
         end if;
     end if;
     end process;
 
--- split the integers using modulo into 2 values on the 10 and 1 position respectively, for both scores
+-- split the integers using modulo into 2 values on the 10 and 1 position respectively
 
-L_scr_10 <= std_logic_vector(to_unsigned(to_integer(unsigned(l_scr)) / 10, 4));
-L_scr_1  <= std_logic_vector(to_unsigned(to_integer(unsigned(l_scr)) mod 10, 4));
+scr_10 <= std_logic_vector(to_unsigned(to_integer(unsigned(scr)) / 10, 4));
+scr_1  <= std_logic_vector(to_unsigned(to_integer(unsigned(scr)) mod 10, 4));
 
-R_scr_10 <= std_logic_vector(to_unsigned(to_integer(unsigned(r_scr)) / 10, 4));
-R_scr_1  <= std_logic_vector(to_unsigned(to_integer(unsigned(r_scr)) mod 10, 4));
 
 end Behavioral;
 

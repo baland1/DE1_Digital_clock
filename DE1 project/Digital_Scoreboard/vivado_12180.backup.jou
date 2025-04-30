@@ -3,10 +3,10 @@
 # SW Build 5239630 on Fri Nov 08 22:35:27 MST 2024
 # IP Build 5239520 on Sun Nov 10 16:12:51 MST 2024
 # SharedData Build 5239561 on Fri Nov 08 14:39:27 MST 2024
-# Start of session at: Thu Apr 24 17:27:10 2025
-# Process ID         : 11268
+# Start of session at: Thu Apr 24 17:11:42 2025
+# Process ID         : 12180
 # Current directory  : C:/Users/andrej/Desktop/DE1 project/Digital_Scoreboard
-# Command line       : vivado.exe -gui_launcher_event rodinguilauncherevent11800 C:\Users\andrej\Desktop\DE1 project\Digital_Scoreboard\Digital_Scoreboard.xpr
+# Command line       : vivado.exe -gui_launcher_event rodinguilauncherevent13492 C:\Users\andrej\Desktop\DE1 project\Digital_Scoreboard\Digital_Scoreboard.xpr
 # Log file           : C:/Users/andrej/Desktop/DE1 project/Digital_Scoreboard/vivado.log
 # Journal file       : C:/Users/andrej/Desktop/DE1 project/Digital_Scoreboard\vivado.jou
 # Running On         : DESKTOP-NA8KE1C
@@ -19,7 +19,7 @@
 # Host memory        : 33960 MB
 # Swap memory        : 2147 MB
 # Total Virtual      : 36108 MB
-# Available Virtual  : 22784 MB
+# Available Virtual  : 25767 MB
 #-----------------------------------------------------------
 start_gui
 open_project {C:/Users/andrej/Desktop/DE1 project/Digital_Scoreboard/Digital_Scoreboard.xpr}
