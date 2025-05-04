@@ -22,8 +22,7 @@ The top-level application consists of:
 - [clock_enable:](https://github.com/baland1/DE1_Digital_clock/blob/main/DE1%20project/Digital_Scoreboard/Digital_Scoreboard.srcs/sources_1/new/clock_enable.vhd) taken from the vhdl course. <br/>
 - [debouncer:](https://github.com/baland1/DE1_Digital_clock/blob/main/DE1%20project/Digital_Scoreboard/Digital_Scoreboard.srcs/sources_1/new/debounce.vhd) taken from vhdl course, originally from [stackoverflow](https://stackoverflow.com/questions/61630181/vhdl-button-debouncing-or-not-as-the-case-may-be). <br/>
 - [counter_sec:](https://github.com/baland1/DE1_Digital_clock/blob/main/DE1%20project/Digital_Scoreboard/Digital_Scoreboard.srcs/sources_1/new/counter_sec.vhd) This component increments the seconds up to 9. After reaching 9, the variable sec_10 is incremented up to 5. When sec reaches 9 and sec_10 reaches 5, the variable mins is incremented up to 9. Once mins reaches 9, the variable min_10 is incremented up to 9.<br/>
-[testbench](https://github.com/baland1/DE1_Digital_clock/blob/main/DE1%20project/Digital_Scoreboard/Digital_Scoreboard.srcs/sim_1/new/counter_sec_tb.vhd)
-![counter_sec_1](images/counter_sec_1.png) <p align="center">the entire simulation</p>
+![counter_sec_1](images/counter_sec_1.png) <p align="center">[the entire simulation](https://github.com/baland1/DE1_Digital_clock/blob/main/DE1%20project/Digital_Scoreboard/Digital_Scoreboard.srcs/sim_1/new/counter_sec_tb.vhd)</p>
 ![counter_sec_2](images/counter_sec_2.png) <p align="center">first 50 seconds of the simulation</p>
 
 
