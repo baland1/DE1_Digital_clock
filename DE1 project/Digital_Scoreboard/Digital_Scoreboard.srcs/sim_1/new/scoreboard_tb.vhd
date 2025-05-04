@@ -1,7 +1,7 @@
 -- Testbench automatically generated online
 -- at https://vhdl.lapinoo.net
--- Generation date : Thu, 17 Apr 2025 12:35:46 GMT
--- Request id : cfwk-fed377c2-6800f5a27e3d1
+-- Generation date : Sun, 04 May 2025 11:57:11 GMT
+-- Request id : cfwk-fed377c2-6817561759014
 
 library ieee;
 use ieee.std_logic_1164.all;
@@ -12,26 +12,20 @@ end tb_scoreboard;
 architecture tb of tb_scoreboard is
 
     component scoreboard
-        port (clk      : in std_logic;
-              rst      : in std_logic;
-              en       : in std_logic;
-              incr_L   : in std_logic;
-              incr_R   : in std_logic;
-              L_scr_1  : out std_logic_vector (3 downto 0);
-              L_scr_10 : out std_logic_vector (3 downto 0);
-              R_scr_1  : out std_logic_vector (3 downto 0);
-              R_scr_10 : out std_logic_vector (3 downto 0));
+        port (clk    : in std_logic;
+              rst    : in std_logic;
+              en     : in std_logic;
+              incr   : in std_logic;
+              scr_1  : out std_logic_vector (3 downto 0);
+              scr_10 : out std_logic_vector (3 downto 0));
     end component;
 
-    signal clk      : std_logic;
-    signal rst      : std_logic;
-    signal en       : std_logic;
-    signal incr_L   : std_logic;
-    signal incr_R   : std_logic;
-    signal L_scr_1  : std_logic_vector (3 downto 0);
-    signal L_scr_10 : std_logic_vector (3 downto 0);
-    signal R_scr_1  : std_logic_vector (3 downto 0);
-    signal R_scr_10 : std_logic_vector (3 downto 0);
+    signal clk    : std_logic;
+    signal rst    : std_logic;
+    signal en     : std_logic;
+    signal incr   : std_logic;
+    signal scr_1  : std_logic_vector (3 downto 0);
+    signal scr_10 : std_logic_vector (3 downto 0);
 
     constant TbPeriod : time := 10 ns; -- ***EDIT*** Put right period here
     signal TbClock : std_logic := '0';
@@ -40,15 +34,12 @@ architecture tb of tb_scoreboard is
 begin
 
     dut : scoreboard
-    port map (clk      => clk,
-              rst      => rst,
-              en       => en,
-              incr_L   => incr_L,
-              incr_R   => incr_R,
-              L_scr_1  => L_scr_1,
-              L_scr_10 => L_scr_10,
-              R_scr_1  => R_scr_1,
-              R_scr_10 => R_scr_10);
+    port map (clk    => clk,
+              rst    => rst,
+              en     => en,
+              incr   => incr,
+              scr_1  => scr_1,
+              scr_10 => scr_10);
 
     -- Clock generation
     TbClock <= not TbClock after TbPeriod/2 when TbSimEnded /= '1' else '0';
@@ -56,12 +47,11 @@ begin
     -- ***EDIT*** Check that clk is really your main clock signal
     clk <= TbClock;
 
-    stimuli : process
+        stimuli : process
     begin
         -- ***EDIT*** Adapt initialization as needed
         en <= '1';
-        incr_L <= '1';
-        incr_R <= '0';
+        incr <= '1';
 
         -- Reset generation
         -- ***EDIT*** Check that rst is really your reset signal
