@@ -26,7 +26,14 @@ The top-level application consists of:
 ![counter_sec_1](images/counter_sec_1.png) <p align="center">[the entire simulation](https://github.com/baland1/DE1_Digital_clock/blob/main/DE1%20project/Digital_Scoreboard/Digital_Scoreboard.srcs/sim_1/new/counter_sec_tb.vhd)</p>
 <br/><br/>
 ![counter_sec_2](images/counter_sec_2.png) <p align="center">first 50 seconds of the simulation</p>
-
-
+- [scoreboard](https://github.com/baland1/DE1_Digital_clock/blob/main/DE1%20project/Digital_Scoreboard/Digital_Scoreboard.srcs/sources_1/new/scoreboard.vhd) After pressing button and enable is '1' the temp signal incr is incremented up to x63(99) after that variable scr is incremented. Using modulo operation the signal is output either scr_1 or scr_10.<br/><br/><br/>
+![scoreboard](images/scoreboard_1.png) <p align="center">[the entire simulation](https://github.com/baland1/DE1_Digital_clock/blob/main/DE1%20project/Digital_Scoreboard/Digital_Scoreboard.srcs/sim_1/new/scoreboard_tb.vhd)</p>
+-[anode_picker](https://github.com/baland1/DE1_Digital_clock/blob/main/DE1%20project/Digital_Scoreboard/Digital_Scoreboard.srcs/sources_1/new/anode_picker.vhd) This component cycles through anodes of 7-segment dispaly. Assigns proper digit to each combination. Some postions have decimal point light up to act as a colon.<br/><br/><br/>
+![anodepicker](images/anodepicker_1.png) <p align="center">[the entire simulation](https://github.com/baland1/DE1_Digital_clock/blob/main/DE1%20project/Digital_Scoreboard/Digital_Scoreboard.srcs/sim_1/new/anode_picker_tb.vhd)</p>
+-[bin2seg](https://github.com/baland1/DE1_Digital_clock/blob/main/DE1%20project/Digital_Scoreboard/Digital_Scoreboard.srcs/sources_1/imports/new/bin2seg.vhd) taken from vhdl course. Converts binary code to 7-segment code.
+  
 # References
-- to do
+-[Tomáš Fryza github](https://github.com/tomas-fryza/vhdl-labs/tree/master)<br/>
+-[digital clock vhdl](https://www.instructables.com/Digital-Clock-in-VHDL/)<br/>
+-Copilot Microsoft AI
+
