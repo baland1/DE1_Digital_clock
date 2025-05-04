@@ -1,4 +1,4 @@
-INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/256779/Desktop/DE1 project/Digital_Scoreboard/Digital_Scoreboard.srcs/sources_1/new/scoreboard.vhd" into library xil_defaultlib
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/andrej/Desktop/DE1 project/Digital_Scoreboard/Digital_Scoreboard.srcs/sources_1/new/scoreboard.vhd" into library xil_defaultlib
 INFO: [VRFC 10-3107] analyzing entity 'scoreboard'
-INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/256779/Desktop/DE1 project/Digital_Scoreboard/Digital_Scoreboard.srcs/sim_1/new/scoreboard_tb.vhd" into library xil_defaultlib
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/andrej/Desktop/DE1 project/Digital_Scoreboard/Digital_Scoreboard.srcs/sim_1/new/scoreboard_tb.vhd" into library xil_defaultlib
 INFO: [VRFC 10-3107] analyzing entity 'tb_scoreboard'
