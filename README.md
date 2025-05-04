@@ -6,37 +6,17 @@
 - Mucha Štefan
 
 # Abstract
-## possible additions
-- switching +- on scoreboard
-- pulldown - preventing multiple increments on one button press
-- Speaker sound (Start, Half-time, Stop, Goal) 
-## components
-- 4x - counter (min, sec, score 1, score 2)
-- Clock enable
-- Bin2Seg
-- Anode picker
-## I/O
-### clock sig.
-CLK100MHZ        - in
-### Buttons
-- BTNC - rst     - in
-- BTNR - score 1 - in ( 6 downto 0)
-- BTNU - enable for clock enable - in
-- BTNL - score 2 - in ( 6 downto 0)
-### LEDs and 7 seg
-- LED_R - match end   - out
-- LED_G - match start - out
-- LED_B - half time   - out
-- 7 seg display
-### Componets desc.
-- Counter mins - 7bit positive integer (0 - 99) stop after 100 mins.
-- Counter sec  - 6 bit integer (0 - 60) reset after 60 sec. + 1 min.
-- score 1      - 7 bit positive integer (0 - 99) after BTNR press +1
-- score 2      - 7 bit positive integer (0 - 99) after BTNL press +1
-- Anode picker - after 10ms bit <<
-- bin2seg
+This project is focused on creating a digital scoreboard using FPGA board Nexys A7 50T. 
+\nThe goal is to create a digital timer that counts to 99:59 and a digital scoreboard that can count up to 99:99.
+\nThe digital timer stops at 45:00 for 900 seconds (15minutes) and a blue LED lights up which signals that the match reached the end of the first half and also that pause is in effect. The clock also stops for 100 seconds after reaching 99:59.
 # Hardware description of demo application
-to do
+The top-level application consists of:\n
+- 2x clock: 1Hz clock for the timer(50Hz for the demo), 1KHz clock for controling the output for the 7-segment display.
+- 2x debouncer: One for the left and one for the right score.
+- counter sec: Increments each cycle of the 1Hz clock. Also includes logic for pausing the game at the given time.
+- 2x scoreboard: Increments score after pressing button and receiving signal from debouncer.
+- anode picker: cycle through anodes of the 7-segment display and displays the correct digit at the correct position.
+- bin2seg: convert binary code to 7-segment display code. 
 ![test](images/top_level.svg)
 # Software desc.
 to do
