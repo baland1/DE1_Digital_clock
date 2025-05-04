@@ -24,6 +24,7 @@ The top-level application consists of:
 - [counter_sec:](https://github.com/baland1/DE1_Digital_clock/blob/main/DE1%20project/Digital_Scoreboard/Digital_Scoreboard.srcs/sources_1/new/counter_sec.vhd) This component increments the seconds up to 9. After reaching 9, the variable sec_10 is incremented up to 5. When sec reaches 9 and sec_10 reaches 5, the variable mins is incremented up to 9. Once mins reaches 9, the variable min_10 is incremented up to 9.<br/>
 <br/><br/>
 ![counter_sec_1](images/counter_sec_1.png) <p align="center">[the entire simulation](https://github.com/baland1/DE1_Digital_clock/blob/main/DE1%20project/Digital_Scoreboard/Digital_Scoreboard.srcs/sim_1/new/counter_sec_tb.vhd)</p>
+<br/><br/>
 ![counter_sec_2](images/counter_sec_2.png) <p align="center">first 50 seconds of the simulation</p>
 
 
