@@ -19,7 +19,7 @@ The top-level application consists of:
 - bin2seg: convert binary code to 7-segment display code. 
 ![test](images/top_level.svg)
 # Software description
--clock desc.: 
+-[clock_enable:](https://github.com/baland1/DE1_Digital_clock/blob/main/DE1%20project/Digital_Scoreboard/Digital_Scoreboard.srcs/sources_1/new/clock_enable.vhd)  
 
 # References
 - to do
