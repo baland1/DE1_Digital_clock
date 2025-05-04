@@ -35,5 +35,5 @@ The top-level application consists of:
 # References
 -[Tomáš Fryza github](https://github.com/tomas-fryza/vhdl-labs/tree/master)<br/>
 -[digital clock vhdl](https://www.instructables.com/Digital-Clock-in-VHDL/)<br/>
--Copilot Microsoft AI
+-[Copilot Microsoft AI](https://copilot.microsoft.com)
 
