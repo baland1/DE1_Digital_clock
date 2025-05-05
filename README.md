@@ -44,8 +44,8 @@ The top-level application consists of:
 - Taken from the vhdl course. Converts binary code to 7-segment code.
   
 # References
--[Tomáš Fryza github](https://github.com/tomas-fryza/vhdl-labs/tree/master)<br/>
--[digital clock vhdl](https://www.instructables.com/Digital-Clock-in-VHDL/)<br/>
--[Copilot Microsoft AI](https://copilot.microsoft.com)<br/>
--[stackoverflow](https://stackoverflow.com/questions/61630181/vhdl-button-debouncing-or-not-as-the-case-may-be)
+- [Tomáš Fryza github](https://github.com/tomas-fryza/vhdl-labs/tree/master)<br/>
+- [digital clock vhdl](https://www.instructables.com/Digital-Clock-in-VHDL/)<br/>
+- [Copilot Microsoft AI](https://copilot.microsoft.com)<br/>
+- [stackoverflow](https://stackoverflow.com/questions/61630181/vhdl-button-debouncing-or-not-as-the-case-may-be)
 
