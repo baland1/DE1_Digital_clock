@@ -45,13 +45,15 @@ The top-level application consists of:
 ![scoreboard](images/scoreboard_1.png) <p align="center">[simulation](https://github.com/baland1/DE1_Digital_clock/blob/main/DE1%20project/Digital_Scoreboard/Digital_Scoreboard.srcs/sim_1/new/scoreboard_tb.vhd)</p>
 <br/><br/><br/>
 ### [anode_picker](https://github.com/baland1/DE1_Digital_clock/blob/main/DE1%20project/Digital_Scoreboard/Digital_Scoreboard.srcs/sources_1/new/anode_picker.vhd)
-- This component cycles through the anodes of the 7-seg display, Assigning the proper value to each anode. Some positions also have the decimal point light up to act as a colon, separating minutes and seconds and the left team's and right team's scores.<br/><br/><br/>
+- This component cycles through the anodes of the 7-seg display, Assigning the proper value to each anode. Some positions also have the decimal point light up to act as a colon, separating minutes and seconds and the left team's and right team's scores.
 - inputs: CLK100MHZ (clk), BTNC (rst), pulse from clock 1KHZ2, digits dig7-4 from counter_sec and digits dig3-0 from the scoreboards.
-- outputs: outp to bin2seg, dec to DP, anodes to AN
+- outputs: outp to bin2seg, dec to DP, anodes to AN<br/><br/><br/>
 ![anodepicker](images/anodepicker_1.png) <p align="center">[simulation](https://github.com/baland1/DE1_Digital_clock/blob/main/DE1%20project/Digital_Scoreboard/Digital_Scoreboard.srcs/sim_1/new/anode_picker_tb.vhd)</p>
 <br/><br/><br/>
 ### [bin2seg](https://github.com/baland1/DE1_Digital_clock/blob/main/DE1%20project/Digital_Scoreboard/Digital_Scoreboard.srcs/sources_1/imports/new/bin2seg.vhd)
-- Taken from the [vhdl course](https://github.com/tomas-fryza/vhdl-labs/tree/master/lab3-segment). Converts binary code to 7-segment code.
+- Taken from the [vhdl course](https://github.com/tomas-fryza/vhdl-labs/tree/master/lab3-segment). Converts binary code from anode_picker to 7-segment code for the 7-segment display.
+- inputs: BTNC (clr), outp (bin) from anode_picker
+- outputs: seg to each bit of the 7-segment display (CA-CG)
   
 # References
 - [Tomáš Fryza github](https://github.com/tomas-fryza/vhdl-labs/tree/master)<br/>
