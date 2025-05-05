@@ -10,7 +10,7 @@ This project is focused on creating a digital scoreboard using FPGA board Nexys 
 The goal is to create a digital timer that counts to 99:59 and a digital scoreboard that can count up to 99:99.
 The digital timer stops at 45:00 for 900 seconds (15 minutes). A blue LED also lights up to signal the match is paused. The clock also stops for 100 seconds after reaching 99:59.
 # Hardware description of demo application
-[![DEMO](https://img.youtube.com/vi/V-X2oO7Ix2E/0.jpg)](https://www.youtube.com/watch?v=V-X2oO7Ix2E)
+[![DEMO](https://img.youtube.com/vi/V-X2oO7Ix2E/0.jpg)](https://www.youtube.com/watch?v=V-X2oO7Ix2E)<br/>
 <br/>
 The [top-level](https://github.com/baland1/DE1_Digital_clock/blob/main/DE1%20project/Digital_Scoreboard/Digital_Scoreboard.runs/impl_1/top_level.bit) application consists of:
 - 2x clock_enable: 1 Hz clock for the timer ( 50 Hz for the demo), 1 kHz clock for controlling the input for the 7-segment display.
