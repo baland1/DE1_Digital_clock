@@ -56,7 +56,7 @@ The [top-level](https://github.com/baland1/DE1_Digital_clock/blob/main/DE1%20pro
 - outputs: seg to each bit of the 7-segment display (CA-CG)
   
 # References
-- [Tomáš Fryza github](https://github.com/tomas-fryza/vhdl-labs/tree/master)<br/>
+- [doc. Ing. Tomáš Frýza,Ph.D github](https://github.com/tomas-fryza/vhdl-labs/tree/master)<br/>
 - [digital clock vhdl](https://www.instructables.com/Digital-Clock-in-VHDL/)<br/>
 - [Copilot Microsoft AI](https://copilot.microsoft.com)<br/>
 - [stackoverflow](https://stackoverflow.com/questions/61630181/vhdl-button-debouncing-or-not-as-the-case-may-be)<br/>
